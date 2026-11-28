@@ -1,19 +1,19 @@
 # luraph-v15.2-deobf
 
-Основа для деобфускатора Luraph v15.2: код из `luraph-v15-deobf` плюс первые правки под v15.2.
-Статус и найденные отличия: [V15_2.md](V15_2.md). Общая документация проекта: [CLAUDE.md](CLAUDE.md), [LURAPH.md](LURAPH.md).
+A foundation for a Luraph v15.2 deobfuscator: code from `luraph-v15-deobf` with initial adjustments for v15.2.
+Status and identified differences: [V15_2.md](V15_2.md). General project documentation: [CLAUDE.md](CLAUDE.md), [LURAPH.md](LURAPH.md).
 
-## Запуск в GitHub Codespaces
+## Running in GitHub Codespaces
 
 ```bash
-./setup.sh                                   # собирает deobf/bin/luau и deobf/bin/luau-ast (несколько минут)
-python3 deobf/deob.py sample.luau --detect   # определить обфускатор
-python3 deobf/deob.py sample.luau --no-devirt --debug   # трасса поведения + промежуточные файлы в output/
+./setup.sh                                 # builds deobf/bin/luau and deobf/bin/luau-ast (takes a few minutes)
+python3 deobf/deob.py sample.luau --detect   # identify the obfuscator
+python3 deobf/deob.py sample.luau --no-devirt --debug   # behavior trace + intermediate files in output/
 ```
 
-`--debug` кладёт рядом `sample.chunk_<ключ>.luau` (VM из `loadstring`), `sample.protos.json` и `sample.deobf.luau`.
-Результат пока не читаемый исходник: см. «Что не работает» в V15_2.md.
+`--debug` also saves `sample.chunk_<key>.luau` (the VM from `loadstring`), `sample.protos.json`, and `sample.deobf.luau` alongside the output.
+The result is not yet readable source code: see “What doesn’t work” in V15_2.md.
 
-## Что нужно для проверки
+## What’s needed for verification
 
-Пара «исходник и обфусцированный результат» (например `sample_src.luau` и `sample_fly_obf.luau`), чтобы сверять вывод построчно.
+A pair consisting of the original source and its obfuscated output (for example, `sample_src.luau` and `sample_fly_obf.luau`), so the output can be compared line by line.
